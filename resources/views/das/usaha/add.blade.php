@@ -1,6 +1,4 @@
-<x-admin.layouts.nav>
-    {{-- <x-slot name="title">Dashboard</x-slot> --}}
-</x-admin.layouts.nav>
+<x-admin.layouts.nav />
 
 <body class="bg-gray-50 dark:bg-gray-800 min-h-screen flex flex-col">
     <x-admin.layouts.navbar />
@@ -56,7 +54,6 @@
                 </div>
                 {{-- <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Tambah Usaha</h1>
-
                 </div> --}}
                 <div class="bg-white border border-4 rounded-lg shadow relative ">
                     <div class="flex items-start justify-between p-5 border-b rounded-t">
@@ -74,68 +71,104 @@
                             </svg>
                         </button>
                     </div>
-
                     <div class="p-6 space-y-6">
-                        <form action="#">
+                        <form action="/das/usaha" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="slug"
                                         class="text-sm font-medium text-gray-900 block mb-2">Slug</label>
                                     <input type="text" name="slug" id="slug"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Masukkan Slug" required="">
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5
+                                        form-control @error('slug') is-invalid @enderror"
+                                        placeholder="Masukkan Slug">
+                                    @error('slug')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="nama_usaha" class="text-sm font-medium text-gray-900 block mb-2">Nama
+                                    {{-- <label for="foto_usaha" class="text-sm font-medium text-gray-900 block mb-2">Foto
                                         Usaha</label>
+                                    <input type="file" name="foto_usaha" id="foto_usaha"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5
+                                        form-control @error('foto_usaha') is-invalid @enderror"
+                                        placeholder="Masukkan foto_usaha"> --}}
+
+
+                                    <label for="foto_usaha" class="mb-1 block text-sm font-medium text-gray-700">Upload
+                                        Foto</label>
+                                    <input id="foto_usaha" type="file" name="foto_usaha"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 rounded-lg sm:text-sm mt-2 block w-full file:mr-4 file:rounded-md file:border-0 file:bg-footer file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
+                                        form-control @error('foto_usaha') is-invalid @enderror"
+                                        placeholder="Masukkan foto_usaha">
+                                    @error('foto_usaha')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="nama_usaha" class="text-sm font-medium text-gray-900 block mb-2">
+                                        Nama Usaha</label>
                                     <input type="text" name="nama_usaha" id="nama_usaha"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Masukkan Nama Usaha" required="">
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5
+                                        form-control @error('nama_usaha') is-invalid @enderror"
+                                        placeholder="Masukkan Nama Usaha">
+                                    @error('nama_usaha')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="category" class="text-sm font-medium text-gray-900 block mb-2">Jenis
+                                    <label for="jenis_usaha" class="text-sm font-medium text-gray-900 block mb-2">Jenis
                                         Usaha</label>
-                                    <input type="text" name="category" id="category"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Masukkan Jenis Usaha" required="">
+                                    <input type="text" name="jenis_usaha" id="jenis_usaha"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5
+                                         form-control @error('jenis_usaha') is-invalid @enderror"
+                                        placeholder="Masukkan Jenis Usaha">
+                                    @error('jenis_usaha')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="body"
                                         class="text-sm font-medium text-gray-900 block mb-2">Body</label>
-                                    <input type="text-area" name="body" id="body"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Masukkan Body" required="">
+                                    <input type="text" name="body" id="body"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5
+                                        form-control @error('body') is-invalid @enderror"
+                                        placeholder="Masukkan Body">
+                                    @error('body')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
-
-                                {{-- <div class="col-span-6 sm:col-span-3">
-                                    <label for="jk" class="text-sm font-medium text-gray-900 block mb-2">Jenis
-                                        Kelamin</label>
-                                    <select name="jk" id="jk"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                                        <option value="">Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                    </select>
-                                </div> --}}
                             </div>
+                            <x-button-save></x-button-save>
                         </form>
                     </div>
-
-                    <div class="p-6 border-t border-gray-200 rounded-b">
-                        <button
-                            class="text-white bg-kirim hover:bg-footer focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="submit">Simpan </button>
-                    </div>
-
                 </div>
             </div>
         </main>
     </div>
-
     </div>
+    <script>
+        const nama_usaha = document.querySelector('#nama_usaha');
+        const slug = document.querySelector('#slug');
+
+        nama_usaha.addEventListener('input', function() {
+            fetch('/das/usaha/checkSlug?nama_usaha=' + encodeURIComponent(nama_usaha.value))
+                .then(response => response.json())
+                .then(data => slug.value = data.slug);
+        });
+    </script>
 
     <x-admin.footer></x-admin.footer>
-
     @stack('scripts')
 </body>
 

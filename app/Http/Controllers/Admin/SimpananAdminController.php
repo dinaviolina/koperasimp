@@ -14,6 +14,7 @@ class SimpananAdminController extends Controller
     {
 
         $simpanan= Simpanan::paginate(5);
+        // $simpanan = Simpanan::all();
         return view('das.simpanan.index', [
             'title' => 'Simpanan',
             'simpanan' => $simpanan
@@ -65,9 +66,11 @@ class SimpananAdminController extends Controller
      */
     public function destroy(Simpanan $simpanan)
     {
-        //
+        $simpanan->delete();
+        return redirect('/das/simpanan')->with('success', 'Simpanan berhasil dihapus!');
     }
     public function setujui ($id){
+        // dd('masuk ke setujui');
     $simpanan = Simpanan::findOrFail($id);
         if ($simpanan->status === 'diajukan') {
         $simpanan->status = 'disetujui';
@@ -79,22 +82,48 @@ class SimpananAdminController extends Controller
         $nasabah->status = 'aktif';
         $nasabah->save();
     }
-
     return redirect()->back()->with('success', 'Simpanan berhasil disetujui dan saldo nasabah diperbarui.');
-
     }
     
 public function tolak($id)
 {
     $simpanan = Simpanan::findOrFail($id);
-
     if ($simpanan->status === 'diajukan') {
         $simpanan->status = 'ditolak';
         $simpanan->save();
     }
-
     return redirect()->back()->with('error', 'Simpanan ditolak.');
 }
+// public function updateStatus(Request $request, $id)
+// {
+//     dd($request->all());
+//     $simpanan = Simpanan::findOrFail($id);
+
+//     if ($simpanan->status === 'diajukan') {
+//         if ($request->action === 'setujui') {
+//             $simpanan->status = 'disetujui';
+//             $simpanan->save();
+
+//             // update saldo nasabah
+//             $nasabah = $simpanan->nasabah;
+//             $nasabah->saldo += $simpanan->jumlah_simpanan;
+//             $nasabah->status = 'aktif';
+//             $nasabah->save();
+
+//             return redirect()->back()->with('success', 'Simpanan berhasil disetujui dan saldo nasabah diperbarui.');
+//         }
+
+//         if ($request->action === 'tolak') {
+//             $simpanan->status = 'ditolak';
+//             $simpanan->save();
+
+//             return redirect()->back()->with('error', 'Simpanan ditolak.');
+//         }
+//     }
+
+//     return redirect()->back();
+// }
+
 public function cetakKwitansi($id)
 {
     $simpanan = Simpanan::with('nasabah')->findOrFail($id);
@@ -102,7 +131,6 @@ public function cetakKwitansi($id)
     if ($simpanan->status !== 'disetujui') {
         return redirect()->back()->with('error', 'Kwitansi hanya bisa dicetak jika simpanan sudah disetujui.');
     }
-
     $pdf = Pdf::loadView('simpanan.kwitansi', compact('simpanan'))
               ->setPaper('A5', 'portrait');
 

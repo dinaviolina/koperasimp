@@ -48,7 +48,7 @@ class NasabahController extends Controller
 
     }
 
-    public function delete(){}
+    
 public function destroy(Nasabah $nasabah)
 {}
 public function checkSlug(Request $request){

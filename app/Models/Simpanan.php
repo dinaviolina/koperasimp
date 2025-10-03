@@ -22,4 +22,8 @@ class Simpanan extends Model
     {
         return $this->belongsTo(Nasabah::class, 'nasabah_id', 'id');
     }
+    public function penarikan()
+    {
+        return $this->hasMany(Penarikan::class, 'simpanan_id', 'id');
+    }
 }

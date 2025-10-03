@@ -35,7 +35,7 @@
                                             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    <a href="#"
+                                    <a href="/dashboard"
                                         class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Dashboard</a>
                                 </div>
                             </li>
@@ -55,6 +55,7 @@
                     </nav>
                     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All usaha</h1>
                 </div>
+
                 <div class="sm:flex">
                     <div
                         class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
@@ -65,50 +66,11 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Search for users">
                             </div>
-                            {{-- </form>
-                        <div class="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0">
-                            <a href="#"
-                                class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
-                                    </path>
-                                </svg>
-                            </a>
-                        </div> --}}
                     </div>
                     <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
-                        <a href="/usaha/add">
+                        <a href="/das/usaha/create">
                             <button type="button" data-modal-target="add-user-modal" data-modal-toggle="add-user-modal"
-                                class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-kirim hover:bg-footer focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                 <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -139,43 +101,57 @@
                             </a>
                     </div>
                 </div>
+                @if (session()->has('success'))
+                    <div
+                        class="bg-green-200 px-6 py-4 min-w-full mx-2 my-4 rounded-md text-lg flex items-center mx-auto ">
+                        <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                            <path fill="currentColor"
+                                d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                            </path>
+                        </svg>
+                        <span class="text-green-800 font-medium text-sm">{{ session('success') }}</span>
+                    </div>
+                @endif
+                <div class="bg-red-200 min-w-full px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center mx-auto ">
+                    <svg viewBox="0 0 24 24" class="text-red-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                        <path fill="currentColor"
+                            d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
+                        </path>
+                    </svg>
+                    <span class="text-red-800 font-medium text-sm"> Your email address is invalid. </span>
+                </div>
                 <div class=" mt-6 ">
-
                     {{-- < class="bg-white p-6 mt-6 w-full h-full overflow-x-auto shadow-md sm:rounded-lg dark:bg-gray-800 dark:border-gray-700"> --}}
-                    <table class="min-w-full divide-y bg-white divide-gray-200 table-auto dark:divide-gray-600">
-                        <thead class="bg-gray-100 dark:bg-gray-700">
+                    <table class="min-w-full divide-y bg-white divide-gray-200 table-auto ">
+                        <thead class="bg-gray-100 ">
                             <tr>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     ID
                                 </th>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Slug
-                                </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Nama Usaha
                                 </th>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Jenis Usaha
                                 </th>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Body
                                 </th>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Created At
                                 </th>
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Updated At
                                 </th>
 
                                 <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    class="p-4 text-sm font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Actions
                                 </th>
                             </tr>
@@ -183,36 +159,25 @@
                         <tbody>
                             @foreach ($usahas as $usaha)
                                 <tr>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-black uppercase dark:text-gray-400">
-                                        <a href="/usaha/view/{{ $usaha->slug }}">{{ $usaha->id }}</a>
-                                    </td>
 
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        {{ $usaha->slug }}</td>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
+                                        {{ $loop->iteration }}</td>
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
                                         {{ $usaha->nama_usaha }}</td>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
                                         {{ $usaha->jenis_usaha }} </td>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
                                         {{ Str::limit($usaha->body, 20) }} </td>
 
                                     </td>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
                                         {{ $usaha->created_at->format('j F Y') }}</td>
                                     </td>
-                                    <td
-                                        class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <td class="p-4 text-xs font-medium text-left text-gray-500  dark:text-gray-400">
                                         {{ $usaha->updated_at->format('j F Y') }}</td>
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
-                                        <button type="button" data-modal-target="edit-user-modal"
-                                            data-modal-toggle="edit-user-modal"
+                                        <a href="/das/usaha/{{ $usaha->slug }}""
                                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -223,9 +188,9 @@
                                                     d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                             </svg>
                                             Lihat
-                                        </button>
-                                        <button type="button" data-modal-target="edit-user-modal"
-                                            data-modal-toggle="edit-user-modal"
+
+                                        </a>
+                                        <a href="/das/usaha/{{ $usaha->slug }}/edit"
                                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -236,19 +201,25 @@
                                                     d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                     clip-rule="evenodd"></path>
                                             </svg>
-                                            Edit Simpanan
-                                        </button>
-                                        <button type="button" data-modal-target="delete-user-modal"
-                                            data-modal-toggle="delete-user-modal"
-                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
-                                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                            Delete user
-                                        </button>
+                                            Edit
+                                        </a>
+                                        <form action="/das/usaha/{{ $usaha->slug }}" method="POST" class="inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" data-modal-target="delete-user-modal"
+                                                data-modal-toggle="delete-user-modal"
+                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
+                                                onclick ="return confirm('Apakah yakin akan menghapus data ini?')">
+                                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                Delete
+                                            </button>
+
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -263,7 +234,6 @@
 
     <footer><x-admin.footer></x-admin.footer>
     </footer>
-
 
     </div>
 

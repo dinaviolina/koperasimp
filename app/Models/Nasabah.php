@@ -53,4 +53,7 @@ class Nasabah extends Model
     public function simpanan(){
         return $this->hasMany(Simpanan::class, 'nasabah_id', 'id');
     }
+    public function penarikan(){
+        return $this->hasMany(Penarikan::class, 'nasabah_id', 'id');
+    }
 }

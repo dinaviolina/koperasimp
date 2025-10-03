@@ -1,30 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\Nasabah;
-use App\Models\Usaha;
+use App\Models\Simpanan;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $usaha = Usaha::latest()->take(3)->get();
-        return view('index',
-    ['title' => 'Home', 'usaha' => $usaha]
-    );
+        $nasabah = Nasabah::all();
+        $simpanan = Simpanan::all();
+        return view('das.index', compact('nasabah', 'simpanan'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
      */
-
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.

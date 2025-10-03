@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Nasabah;
-use App\Models\Usaha;
 
-class HomeController extends Controller
+class PeminjamanAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $usaha = Usaha::latest()->take(3)->get();
-        return view('index',
-    ['title' => 'Home', 'usaha' => $usaha]
-    );
+        return view('das.pinjaman.index', ['title' => 'Peminjaman']);
     }
-
-
 
     /**
      * Show the form for creating a new resource.
      */
-
+    public function create()
+    {
+        return view('das.pinjaman.create', ['title' => 'Tambah Peminjaman']);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -47,7 +44,7 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('das.pinjaman.edit', ['title' => 'Edit Peminjaman']);
     }
 
     /**
@@ -64,5 +61,23 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function belumvalidasi()
+    {
+        return view('das.pinjaman.pending', [
+            'title' => 'Belum Tervalidasi'
+        ]);
+    }
+    public function reject()
+    {
+        return view('das.pinjaman.reject', [
+            'title' => 'Tolak peminjaman'
+        ]);
+    }
+    public function setujui()
+    {
+        return view('das.pinjaman.valid', [
+            'title' => 'Tervalidasi'
+        ]);
     }
 }

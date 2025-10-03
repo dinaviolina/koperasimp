@@ -37,7 +37,6 @@
             <h1 class="text-3xl font-bold text-center mb-8"> {{ $nasabah->nama }}</h1>
             <p><span class="bold">Jumlah Simpanan saat ini: Rp</span>
                 {{ number_format($nasabah->saldo, 0, ',', '.') }}</p>
-
             <!-- Search and Add User (Static) -->
             <div class="flex flex-row md:flex-row justify-end items-center gap-2 mb-6">
                 {{-- <div class="w-full md:w-1/3 mb-4 md:mb-0">
@@ -101,8 +100,8 @@
                                     {{ number_format($s->jumlah_simpanan, 0, ',', '.') }}</td>
                                 <td class="py-3 px-6 text-left">Rp {{ number_format($s->nasabah->saldo, 0, ',', '.') }}
                                 </td>
-                                <td class="py-3 px-6 text-center">
-                                    {{ number_format($s->nasabah->penarikan, 0, ',', '.') }}
+                                <td class="py-3 px-6 text-center"> Rp
+                                    penarikan belum "-"
                                 </td>
                                 <td class="py-3 px-6 text-center">{{ ucfirst($s->status) }}</td>
                                 <td class="py-3 px-6 text-center">
