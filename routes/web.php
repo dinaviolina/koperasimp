@@ -73,6 +73,7 @@ Route::get('/daslain', function () {
 //     return view('das.simpanan.index');
 // });
 Route::resource('/das/simpanan', SimpananAdminController::class);
+Route::get('/das/simpanan/show/{simpanan:id}', [SimpananAdminController::class, 'show'])->name('dashboard.simpanan.show');
 // routes/web.php
 // Route::post('/dashboard/simpanan/{id}/update-status', [SimpananController::class, 'updateStatus'])->name('simpanan.updateStatus');
 // Route::put('/dashboard/simpanan/{id}/update-status', [SimpananController::class, 'updateStatus'])->name('simpanan.updateStatus');
@@ -83,7 +84,8 @@ Route::post('/dashboard/simpanan/{id}/tolak', [SimpananAdminController::class, '
 Route::get('/simpanan/add', function () {
     return view('das.simpanan.insert_simpanan', ['title' => 'Tambah Simpanan']);
 });
-Route::get('/dashboard/simpanan/{kode_simpanan}/edit', [SimpananAdminController::class, 'edit'])->name('simpanan.edit');
+Route::get('/dashboard/simpanan/{kode_simpanan}/edit', [SimpananAdminController::class, 'edit'])->name('dashboard.simpanan.edit');
+Route::put('/dashboard/simpanan/{kode_simpanan}', [SimpananAdminController::class, 'update'])->name('dashboard.simpanan.update');
 Route::get('/simpanan/view', function () {
     return view('home.simpanan', ['title' => 'Simpanan']);
 });

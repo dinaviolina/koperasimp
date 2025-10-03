@@ -9,8 +9,7 @@
     {{-- <div id="main-content" class=" pt-16 relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"> --}}
     <div id="main-content" class=" relative w-max-full h-screen overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
         <main class="flex-grow ">
-            {{-- class="p-4  bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700"> --}}
-            {{-- <div class="w-full mb-1"> --}}
+
             <div class="px-6 pt-6">
                 <div class="mb-4">
                     <nav class="flex mb-5" aria-label="Breadcrumb">
@@ -61,7 +60,7 @@
                 <div class="bg-white border border-4 rounded-lg shadow relative ">
                     <div class="flex items-start justify-between p-5 border-b rounded-t">
                         <h3 class="text-xl font-semibold">
-                            Tambah Simpanan
+                            Edit Simpanan
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
@@ -76,79 +75,103 @@
                     </div>
 
                     <div class="p-6 space-y-6">
-                        <form action="#">
+                        <form action="{{ route('dashboard.simpanan.update', $simpanan->kode_simpanan) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="product-name"
                                         class="text-sm font-medium text-gray-900 block mb-2">Nama</label>
                                     <input type="text" name="product-name" id="product-name"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Masukkan Nama Lengkap" required="">
+                                        placeholder="Masukkan Nama Lengkap"
+                                        value="{{ old('nama', $simpanan->nasabah->nama) }}">
+                                    @error('nama')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="category"
-                                        class="text-sm font-medium text-gray-900 block mb-2">NIK</label>
+                                    <label for="category" class="text-sm font-medium text-gray-900 block mb-2">Jumlah
+                                        Simpanan</label>
                                     <input type="text" name="category" id="category"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Electronics" required="">
+                                        placeholder="Electronics"
+                                        value="{{ old('jumlah_simpanan', 'Rp ' . $simpanan->jumlah_simpanan) }}">
+                                    @error('jumlah_simpanan')
+                                        <div class="invalid-feedback">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="jk" class="text-sm font-medium text-gray-900 block mb-2">Jenis
-                                        Kelamin</label>
-                                    <select name="jk" id="jk"
+                                    <label for="jenis_simpanan"
+                                        class="text-sm font-medium text-gray-900 block mb-2">Pilihan
+                                        Pembayaran</label>
+                                    <select name="jenis_simpanan" id="jenis_simpanan"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                                        <option value="">Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="">Jenis Pembayaran</option>
+                                        <option value="transfer"
+                                            {{ old('jenis_simpanan', $simpanan->jenis_simpanan) == 'transfer' ? 'selected' : '' }}>
+                                            Transfer
+
+                                        </option>
+                                        <option value="tunai"
+                                            {{ old('jenis_simpanan', $simpanan->jenis_simpanan) == 'tunai' ? 'selected' : '' }}>
+                                            Tunai
+
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="price" class="text-sm font-medium text-gray-900 block mb-2">Tanggal
-                                        Bergabung</label>
-                                    <input type="date" name="price" id="price"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        required="">
+                                    <label for="status"
+                                        class="text-sm font-medium text-gray-900 block mb-2">Status</label>
+                                    <select name="status" id="status"
+                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                                        <option value="">Status</option>
+                                        <option value="diajukan"
+                                            {{ old('status', $simpanan->status) == 'diajukan' ? 'selected' : '' }}>
+                                            Diajukan</option>
+                                        <option value="disetujui"
+                                            {{ old('status', $simpanan->status) == 'disetujui' ? 'selected' : '' }}>
+                                            Disetujui</option>
+                                        <option value="ditolak"
+                                            {{ old('status', $simpanan->status) == 'ditolak' ? 'selected' : '' }}>
+                                            Ditolak</option>
+                                    </select>
                                 </div>
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="saldo"
-                                        class="text-sm font-medium text-gray-900 block mb-2">Saldo</label>
-                                    <input disabled type="text" name="saldo" id="saldo"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Default 0">
+                                <div class="col-span-6">
+                                    <label for="dropzone-file" class="text-sm font-medium text-gray-900 block mb-2">
+                                        Bukti Simpanan
+                                    </label>
+
+                                    {{-- Tampilkan gambar bukti jika ada --}}
+                                    @if ($simpanan->bukti_simpanan)
+                                        <img src="{{ asset('storage/' . $simpanan->bukti_simpanan) }}"
+                                            alt="Bukti Simpanan" class="mb-2 w-48 h-auto border rounded">
+                                    @endif
+
+                                    <input type="file" name="bukti_simpanan" id="dropzone-file"
+                                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer
+               focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 
+               dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-cyan-500" />
+
+                                    @error('bukti_simpanan')
+                                        <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="pinjaman" class="text-sm font-medium text-gray-900 block mb-2">
-                                        Pinjaman</label>
-                                    <input disabled type="text" name="pinjaman" id="pinjaman"
-                                        class=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Default 0">
-                                </div>
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="pinjaman" class="text-sm font-medium text-gray-900 block mb-2">
-                                        Status</label>
-                                    <input disabled type="text" name="pinjaman" id="pinjaman"
-                                        class=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                        placeholder="Default Tidak Aktif">
-                                </div>
-                                {{-- <div class="col-span-full">
-                                    <label for="product-details"
-                                        class="text-sm font-medium text-gray-900 block mb-2">Product Details</label>
-                                    <textarea id="product-details" rows="6"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                                        placeholder="Details"></textarea>
-                                </div> --}}
+                            </div>
+                            <div class="py-6 border-t border-gray-200 rounded-b">
+                                <button
+                                    class="text-white bg-kirim hover:bg-footer focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                    type="submit">Update data</button>
                             </div>
                         </form>
-                    </div>
 
-                    <div class="p-6 border-t border-gray-200 rounded-b">
-                        <button
-                            class="text-white bg-kirim hover:bg-footer focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="submit">Save all</button>
                     </div>
-
                 </div>
-            </div>
         </main>
     </div>
 

@@ -137,7 +137,8 @@
                                         <td class="py-4 px-6 ">
                                             {{ $simpanan->firstItem() + $loop->index }}</td>
                                         <td class="py-4 px-6 ">{{ $item->kode_simpanan }}</td>
-                                        <td class="py-4 px-2 "><a href="">{{ $item->nasabah->nama }}</a></td>
+                                        <td class="py-4 px-2 "><a href="">{{ $item->nasabah->nama }}</a>
+                                        </td>
                                         <td class="py-4 px-2 ">Rp {{ $item->jumlah_simpanan }}</td>
                                         <td class="py-4 px-2 ">{{ $item->jenis_simpanan }}</td>
                                         <td class="py-4 px-6 ">
@@ -215,7 +216,7 @@
                                             @endif
                                         </td>
                                         <td class="p-4 space-x-2 whitespace-nowrap py-4 px-6 ">
-                                            <a href="{{ route('simpanan.edit', $item->kode_simpanan) }}"
+                                            <a href="{{ route('dashboard.simpanan.edit', $item->kode_simpanan) }}"
                                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-castletonGreen hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  ">
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                     xmlns="http://www.w3.org/2000/svg">

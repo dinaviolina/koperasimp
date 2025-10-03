@@ -40,9 +40,13 @@ class SimpananAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Simpanan $simpanan)
+    public function show($kode_simpanan)
     {
-        //
+        $simpanan = Simpanan::where('kode_simpanan', $kode_simpanan)->firstOrFail();
+        return view('das.simpanan.show', [
+            'title' => 'Detail Simpanan',
+            'simpanan' => $simpanan
+        ]);
     }
 
     /**
@@ -51,7 +55,7 @@ class SimpananAdminController extends Controller
     public function edit($kode_simpanan)
     {
         $simpanan = Simpanan::where('kode_simpanan', $kode_simpanan)->firstOrFail();
-        return view('das.simpanan.edit', [
+        return view('das.simpanan.update_simpanan', [
             'title' => 'Edit Simpanan',
             'simpanan' => $simpanan
         ]);
@@ -60,9 +64,44 @@ class SimpananAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Simpanan $simpanan)
+    public function update($kode_simpanan, Request $request)
     {
-        //
+        $simpanan = Simpanan::where('kode_simpanan', $kode_simpanan)->firstOrFail();
+        $request->validate([
+    'nama' => 'sometimes|string|max:255',               // Hanya validasi jika ada input
+    'jumlah_simpanan' => 'sometimes|numeric|min:0',
+    'jenis_simpanan' => 'sometimes|string',
+    'status' => 'sometimes|string',
+    'bukti_simpanan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+]);
+if ($request->has('nama')) {
+    $simpanan->nasabah->nama = $request->nama;
+    $simpanan->nasabah->save();
+}
+
+if ($request->has('jumlah_simpanan')) {
+    $simpanan->jumlah_simpanan = $request->jumlah_simpanan;
+}
+
+if ($request->has('jenis_simpanan')) {
+    $simpanan->jenis_simpanan = $request->jenis_simpanan;
+}
+
+if ($request->has('status')) {
+    $simpanan->status = $request->status;
+}
+
+// File upload sama seperti sebelumnya
+if ($request->hasFile('bukti_simpanan')) {
+    if ($simpanan->bukti_simpanan && Storage::exists($simpanan->bukti_simpanan)) {
+        Storage::delete($simpanan->bukti_simpanan);
+    }
+    $path = $request->file('bukti_simpanan')->store('bukti_simpanan', 'public');
+    $simpanan->bukti_simpanan = $path;
+}
+
+$simpanan->save();
+        return redirect('/das/simpanan')->with('success', 'Simpanan berhasil diperbarui.');
     }
 
     /**
