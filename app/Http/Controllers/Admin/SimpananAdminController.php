@@ -48,9 +48,13 @@ class SimpananAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Simpanan $simpanan)
+    public function edit($kode_simpanan)
     {
-        //
+        $simpanan = Simpanan::where('kode_simpanan', $kode_simpanan)->firstOrFail();
+        return view('das.simpanan.edit', [
+            'title' => 'Edit Simpanan',
+            'simpanan' => $simpanan
+        ]);
     }
 
     /**
@@ -65,10 +69,27 @@ class SimpananAdminController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Simpanan $simpanan)
-    {
-        $simpanan->delete();
-        return redirect('/das/simpanan')->with('success', 'Simpanan berhasil dihapus!');
+{
+    // Jika simpanan sudah disetujui, kurangi saldo nasabah
+    if ($simpanan->status === 'disetujui') {
+        $nasabah = $simpanan->nasabah;
+        $nasabah->saldo -= $simpanan->jumlah_simpanan;
+
+        // Pastikan saldo tidak negatif
+        if ($nasabah->saldo < 0) {
+            $nasabah->saldo = 0;
+        }
+
+        $nasabah->save();
     }
+
+    // Hapus data simpanan
+    $simpanan->delete();
+
+    return redirect()->back()->with('success', 'Simpanan berhasil dihapus dan saldo nasabah diperbarui.');
+}
+
+
     public function setujui ($id){
         // dd('masuk ke setujui');
     $simpanan = Simpanan::findOrFail($id);
@@ -136,6 +157,5 @@ public function cetakKwitansi($id)
 
     return $pdf->download('kwitansi_simpanan_'.$simpanan->id.'.pdf');
 }
-
 
 }

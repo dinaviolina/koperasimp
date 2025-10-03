@@ -99,6 +99,16 @@
                             </a>
                         </div>
                     </div>
+                    @if (session('success'))
+                        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div
                         class="bg-white  mt-6 w-full h-full overflow-x-auto shadow-md sm:rounded-lg dark:bg-gray-800 dark:border-gray-700">
                         <table class="table-auto  w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -205,7 +215,7 @@
                                             @endif
                                         </td>
                                         <td class="p-4 space-x-2 whitespace-nowrap py-4 px-6 ">
-                                            <button type="button"
+                                            <a href="{{ route('simpanan.edit', $item->kode_simpanan) }}"
                                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-castletonGreen hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  ">
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -216,11 +226,11 @@
                                                         d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                         clip-rule="evenodd"></path>
                                                 </svg>
-                                                <a href="{{ route('simpanan.edit', $item->id) }}">Edit</a>
-                                            </button>
+                                                Edit
+                                            </a>
                                             <button type="button"
-                                                data-modal-target="delete-simpanan-{{ $item->id }}"
-                                                data-modal-toggle="delete-simpanan-{{ $item->id }}"
+                                                data-modal-target="delete-simpanan-{{ $item->kode_simpanan }}"
+                                                data-modal-toggle="delete-simpanan-{{ $item->kode_simpanan }}"
                                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white 
                 bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300">
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
@@ -233,20 +243,24 @@
                                                 </svg>
                                                 Hapus
                                             </button>
-                                            <div id="delete-simpanan-{{ $item->id }}" tabindex="-1"
+                                            <div id="delete-simpanan-{{ $item->kode_simpanan }}" tabindex="-1"
                                                 aria-hidden="true"
                                                 class="hidden fixed top-0 left-0 right-0 z-50 flex justify-center items-center w-full h-full bg-black/50">
                                                 <div class="bg-white rounded-lg shadow p-6 w-full max-w-md">
-                                                    <h3 class="mb-4 text-lg font-semibold text-gray-900">Apakah Anda
+                                                    <h3 class="mb-4 text-lg font-semibold text-gray-900">Apakah
+                                                        Anda
                                                         yakin?</h3>
-                                                    <p class="mb-6 text-sm text-gray-500">Data ini akan dihapus secara
+                                                    <p class="mb-6 text-sm text-gray-500">Data ini akan dihapus
+                                                        secara
                                                         permanen.</p>
                                                     <div class="flex justify-end gap-3">
-                                                        <button data-modal-hide="delete-simpanan-{{ $item->id }}"
+                                                        <button
+                                                            data-modal-hide="delete-simpanan-{{ $item->kode_simpanan }}"
                                                             class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded hover:bg-gray-300">
                                                             Batal
                                                         </button>
-                                                        <form action="{{ route('simpanan.destroy', $item->id) }}"
+                                                        <form
+                                                            action="{{ route('dashboard.simpanan.destroy', $item->kode_simpanan) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')

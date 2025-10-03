@@ -10,6 +10,7 @@ class Simpanan extends Model
     
     protected $keyType = 'string';
     public $incrementing = false;
+
     protected $fillable = [
         'nasabah_id',
         'kode_simpanan',
@@ -18,6 +19,10 @@ class Simpanan extends Model
         'bukti_simpanan',
         'status',
     ];
+    public function getRouteKeyName()
+    {
+        return 'kode_simpanan';
+    }
     public function nasabah()
     {
         return $this->belongsTo(Nasabah::class, 'nasabah_id', 'id');
